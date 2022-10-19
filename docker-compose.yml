@@ -1,0 +1,19 @@
+services:
+  customapp-compose-ver:
+    build: .
+    container_name: custom-dc
+    ports:
+      - 5000:5000
+  some-postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=furkan
+    ports:
+      - 5432:5432
+  mongo-server:
+    image: mongo:latest
+    ports:
+    - 27017:27017
+  

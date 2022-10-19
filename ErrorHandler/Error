@@ -1,0 +1,27 @@
+from msilib.schema import Error
+from flask import Flask,request, jsonify,Blueprint
+
+ErrorHandler=Blueprint("ErrorHandler",import_name=__name__)
+
+@ErrorHandler.errorhandler(400)
+def handle_bad_request(e):
+    # from-data gibi parametreleri girmeyince veriyor
+    return 'custom bad request!', 400
+
+
+@ErrorHandler.errorhandler(405)
+def handle_method_not_allowed(e):
+    # method dışında gönderilen isteklerde çıkan hata
+    return 'method not allowed', 405
+
+
+@ErrorHandler.errorhandler(KeyError)
+def handle_KeyError(e):
+    # KEY VALUE Kısmında KEY kısmını hatalı girdiğimizde çıkan hata
+    return 'HTTP AUTHORIZATION', KeyError
+
+
+@ErrorHandler.errorhandler(404)
+def handle_InvalidRoute(e):
+    # olmayan bi urlye gitmek istediğimizde çıkıyor
+    return 'Invalid URL', 404
