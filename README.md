@@ -4,12 +4,12 @@
 
 All you have to do is:
 
-*docker-compose build 
+`docker-compose build `
 
 
 Then:
 
-*docker-compose up 
+`docker-compose up` 
 
 
 You can now send requests to the app with Postman.
